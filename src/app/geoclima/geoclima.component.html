@@ -1,0 +1,32 @@
+
+<div class="container" >
+        <div class="row mt-5" *ngIf="!loaded" >
+
+         Cargando...
+        </div>
+        <div class="container" *ngIf="loaded"  >
+            <div class="row justify-content-center" >
+                <h2>{{nombreCiudad}},{{pais}},{{horaAct}}</h2>
+            </div>
+                    <div class="row d-flex justify-content-center" >
+                        <div class=" col-sm-12 col-md-12 col-lg-6 bg-light justify-content-center text-center p-2 m-2" *ngFor="let data of datosClima['dataseries'].slice(0,1); index as i" >
+                                <h3>{{data['date']['Dia']}}</h3>
+                                <h3>{{data['date']['Fecha'].toLocaleDateString()}}</h3>
+                                <img src="{{changeImg(data['weather'])}} " width="100" weight="100" alt="No se puede visualizar la imagen">
+                                <h4>Max:{{data['temp2m']['max']}}</h4>
+                                <h4>Min:{{data['temp2m']['min']}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                        <div class=" col-sm-12 col-md-12 col-lg-5 bg-light justify-content-center text-center p-2 m-2" *ngFor="let data of datosClima['dataseries'].slice(1,5); index as i">
+                                    <h3>{{data['date']['Dia']}}</h3>
+                                    <h3>{{data['date']['Fecha'].toLocaleDateString()}}</h3>
+                                <img src="{{changeImg(data['weather'])}} "width="100" weight="100" alt="No se puede visualizar la imagen">
+                                    <h4>Max:{{data['temp2m']['max']}}</h4>
+                                    <h4>Min:{{data['temp2m']['min']}}</h4>
+                        </div>
+                    </div>
+
+        </div>
+</div>
